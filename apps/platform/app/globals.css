@@ -1,0 +1,169 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+  /* Aplicando paleta de cores baseada nas imagens fornecidas */
+  --background: #ffffff;
+  --foreground: #181818;
+  --card: #ffffff;
+  --card-foreground: #181818;
+  --popover: #ffffff;
+  --popover-foreground: #181818;
+  --primary: #0c8bc0;
+  --primary-foreground: #ffffff;
+  --secondary: #e7f3f9;
+  --secondary-foreground: #0c8bc0;
+  --muted: #f1f1f1;
+  --muted-foreground: #666666;
+  --accent: #cee8f2;
+  --accent-foreground: #0c8bc0;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e4e4e4;
+  --input: #e4e4e4;
+  --ring: #0c8bc0;
+  --chart-1: #0c8bc0;
+  --chart-2: #22c55e;
+  --chart-3: #ef4444;
+  --chart-4: #9ed1e6;
+  --chart-5: #6d9909;
+  --radius: 0.625rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #181818;
+  --sidebar-primary: #0c8bc0;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e7f3f9;
+  --sidebar-accent-foreground: #0c8bc0;
+  --sidebar-border: #e4e4e4;
+  --sidebar-ring: #0c8bc0;
+
+  /* Adicionando cores customizadas da paleta */
+}
+
+.dark {
+  --background: #181818;
+  --foreground: #f1f1f1;
+  --card: #303030;
+  --card-foreground: #f1f1f1;
+  --popover: #303030;
+  --popover-foreground: #f1f1f1;
+  --primary: #3da2cd;
+  --primary-foreground: #ffffff;
+  --secondary: #474747;
+  --secondary-foreground: #f1f1f1;
+  --muted: #474747;
+  --muted-foreground: #adadad;
+  --accent: #5f5f5f;
+  --accent-foreground: #f1f1f1;
+  --destructive: #f87171;
+  --destructive-foreground: #ffffff;
+  --border: #474747;
+  --input: #474747;
+  --ring: #3da2cd;
+  --chart-1: #3da2cd;
+  --chart-2: #4ade80;
+  --chart-3: #f87171;
+  --chart-4: #9ed1e6;
+  --chart-5: #86efac;
+  --sidebar: #303030;
+  --sidebar-foreground: #f1f1f1;
+  --sidebar-primary: #3da2cd;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #474747;
+  --sidebar-accent-foreground: #f1f1f1;
+  --sidebar-border: #474747;
+  --sidebar-ring: #3da2cd;
+}
+
+@theme inline {
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-donai-primary-50: #e7f3f9;
+  --color-donai-primary-100: #cee8f2;
+  --color-donai-primary-200: #9ed1e6;
+  --color-donai-primary-300: #6d9909;
+  --color-donai-primary-400: #3da2cd;
+  --color-donai-primary-500: #0c8bc0;
+  --color-donai-primary-600: #0a6f9a;
+  --color-donai-primary-700: #075373;
+  --color-donai-primary-800: #05384d;
+  --color-donai-primary-900: #021c26;
+
+  --color-donai-neutral-50: #f1f1f1;
+  --color-donai-neutral-100: #e4e4e4;
+  --color-donai-neutral-200: #c9c9c9;
+  --color-donai-neutral-300: #adadad;
+  --color-donai-neutral-400: #929292;
+  --color-donai-neutral-500: #777777;
+  --color-donai-neutral-600: #5f5f5f;
+  --color-donai-neutral-700: #474747;
+  --color-donai-neutral-800: #303030;
+  --color-donai-neutral-900: #181818;
+
+  --color-donai-success-50: #f3f9f4;
+  --color-donai-success-100: #dcfce7;
+  --color-donai-success-200: #bbf7d0;
+  --color-donai-success-300: #86efac;
+  --color-donai-success-400: #4ade80;
+  --color-donai-success-500: #22c55e;
+  --color-donai-success-600: #16a34a;
+  --color-donai-success-700: #15803d;
+  --color-donai-success-800: #166534;
+  --color-donai-success-900: #145329;
+
+  --color-donai-error-50: #fef2f2;
+  --color-donai-error-100: #fee2e2;
+  --color-donai-error-200: #fecaca;
+  --color-donai-error-300: #fca5a5;
+  --color-donai-error-400: #f87171;
+  --color-donai-error-500: #ef4444;
+  --color-donai-error-600: #dc2626;
+  --color-donai-error-700: #b91c1c;
+  --color-donai-error-800: #991b1b;
+  --color-donai-error-900: #7f1d1d;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

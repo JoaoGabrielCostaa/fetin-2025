@@ -1,0 +1,8 @@
+ - usuarios (id, name, cpf, email, job, password, ong_id, created_at, updated_at)
+ - ongs (id, name, cnpj, description, mission, cep, foundation_date, website, contact_number, contact_email, created_at, updated_at)
+ - ongs_projects (id, name, description, status, ong_id (FK), image, created_at, updated_at)
+ - ongs_projects_participants (user_id (FK), project_id (FK))
+ - ongs_followers (user_id (FK), ong_id (FK), followed_at)
+ - ongs_tags (id, title)
+ - feed_posts (id, user_id (FK), description, created_at, updated_at)
+ - 
