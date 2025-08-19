@@ -16,6 +16,7 @@ import {
   MoreHorizontal,
   HandCoins,
 } from "lucide-react";
+import { CreatePostCard } from "./create-post-card";
 
 const commentSchema = z.object({
   comment: z
@@ -78,6 +79,8 @@ export function FeedContent() {
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
+      <CreatePostCard />
+
       <div className="flex flex-wrap sm:flex-nowrap gap-1 bg-white rounded-lg p-1 shadow-sm border border-gray-200">
         <Button
           variant="default"
