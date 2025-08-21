@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE "public"."User" (
+CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "cpf" TEXT NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE "public"."User" (
 );
 
 -- CreateTable
-CREATE TABLE "public"."ONG" (
+CREATE TABLE "ONG" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "cnpj" TEXT NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE "public"."ONG" (
 );
 
 -- CreateTable
-CREATE TABLE "public"."ONGsProject" (
+CREATE TABLE "ONGsProject" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT,
@@ -49,7 +49,7 @@ CREATE TABLE "public"."ONGsProject" (
 );
 
 -- CreateTable
-CREATE TABLE "public"."ONGsProjectsParticipant" (
+CREATE TABLE "ONGsProjectsParticipant" (
     "userId" INTEGER NOT NULL,
     "projectId" INTEGER NOT NULL,
 
@@ -57,7 +57,7 @@ CREATE TABLE "public"."ONGsProjectsParticipant" (
 );
 
 -- CreateTable
-CREATE TABLE "public"."ONGsFollower" (
+CREATE TABLE "ONGsFollower" (
     "userId" INTEGER NOT NULL,
     "ongId" INTEGER NOT NULL,
     "followedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -66,7 +66,7 @@ CREATE TABLE "public"."ONGsFollower" (
 );
 
 -- CreateTable
-CREATE TABLE "public"."ONGsTag" (
+CREATE TABLE "ONGsTag" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "ongId" INTEGER NOT NULL,
@@ -75,7 +75,7 @@ CREATE TABLE "public"."ONGsTag" (
 );
 
 -- CreateTable
-CREATE TABLE "public"."FeedPost" (
+CREATE TABLE "FeedPost" (
     "id" SERIAL NOT NULL,
     "userId" INTEGER NOT NULL,
     "description" TEXT NOT NULL,
@@ -86,34 +86,34 @@ CREATE TABLE "public"."FeedPost" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "User_cpf_key" ON "public"."User"("cpf");
+CREATE UNIQUE INDEX "User_cpf_key" ON "User"("cpf");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "User_email_key" ON "public"."User"("email");
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "ONG_cnpj_key" ON "public"."ONG"("cnpj");
+CREATE UNIQUE INDEX "ONG_cnpj_key" ON "ONG"("cnpj");
 
 -- AddForeignKey
-ALTER TABLE "public"."User" ADD CONSTRAINT "User_ongId_fkey" FOREIGN KEY ("ongId") REFERENCES "public"."ONG"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "User" ADD CONSTRAINT "User_ongId_fkey" FOREIGN KEY ("ongId") REFERENCES "ONG"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "public"."ONGsProject" ADD CONSTRAINT "ONGsProject_ongId_fkey" FOREIGN KEY ("ongId") REFERENCES "public"."ONG"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "ONGsProject" ADD CONSTRAINT "ONGsProject_ongId_fkey" FOREIGN KEY ("ongId") REFERENCES "ONG"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "public"."ONGsProjectsParticipant" ADD CONSTRAINT "ONGsProjectsParticipant_userId_fkey" FOREIGN KEY ("userId") REFERENCES "public"."User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "ONGsProjectsParticipant" ADD CONSTRAINT "ONGsProjectsParticipant_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "public"."ONGsProjectsParticipant" ADD CONSTRAINT "ONGsProjectsParticipant_projectId_fkey" FOREIGN KEY ("projectId") REFERENCES "public"."ONGsProject"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "ONGsProjectsParticipant" ADD CONSTRAINT "ONGsProjectsParticipant_projectId_fkey" FOREIGN KEY ("projectId") REFERENCES "ONGsProject"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "public"."ONGsFollower" ADD CONSTRAINT "ONGsFollower_userId_fkey" FOREIGN KEY ("userId") REFERENCES "public"."User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "ONGsFollower" ADD CONSTRAINT "ONGsFollower_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "public"."ONGsFollower" ADD CONSTRAINT "ONGsFollower_ongId_fkey" FOREIGN KEY ("ongId") REFERENCES "public"."ONG"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "ONGsFollower" ADD CONSTRAINT "ONGsFollower_ongId_fkey" FOREIGN KEY ("ongId") REFERENCES "ONG"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "public"."ONGsTag" ADD CONSTRAINT "ONGsTag_ongId_fkey" FOREIGN KEY ("ongId") REFERENCES "public"."ONG"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "ONGsTag" ADD CONSTRAINT "ONGsTag_ongId_fkey" FOREIGN KEY ("ongId") REFERENCES "ONG"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "public"."FeedPost" ADD CONSTRAINT "FeedPost_userId_fkey" FOREIGN KEY ("userId") REFERENCES "public"."User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "FeedPost" ADD CONSTRAINT "FeedPost_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

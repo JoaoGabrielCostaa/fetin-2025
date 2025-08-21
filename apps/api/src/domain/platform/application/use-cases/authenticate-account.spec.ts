@@ -1,23 +1,25 @@
-import { InMemoryStudentsRepository } from 'test/repositories/in-memory-students-repository'
+import { InMemoryAccountsRepository } from 'test/repositories/in-memory-accounts-repository'
+
 import { FakeHasher } from 'test/cryptography/fake-hasher'
 import { FakeEncrypter } from 'test/cryptography/fake-encrypter'
-import { AuthenticateStudentUseCase } from './authenticate-student'
-import { makeStudent } from 'test/factories/make-student'
+import { makeStudent } from 'test/factories/make-account'
 
-let inMemoryStudentsRepository: InMemoryStudentsRepository
+import { AuthenticateAccountUseCase } from './authenticate-account'
+
+let inMemoryAccountsRepository: InMemoryAccountsRepository
 let fakeHasher: FakeHasher
 let encrypter: FakeEncrypter
 
-let sut: AuthenticateStudentUseCase
+let sut: AuthenticateAccountUseCase
 
-describe('Authenticate Student', () => {
+describe('Authenticate Account', () => {
   beforeEach(() => {
-    inMemoryStudentsRepository = new InMemoryStudentsRepository()
+    inMemoryAccountsRepository = new InMemoryAccountsRepository()
     fakeHasher = new FakeHasher()
     encrypter = new FakeEncrypter()
 
-    sut = new AuthenticateStudentUseCase(
-      inMemoryStudentsRepository,
+    sut = new AuthenticateAccountUseCase(
+      inMemoryAccountsRepository,
       fakeHasher,
       encrypter,
     )
@@ -29,7 +31,7 @@ describe('Authenticate Student', () => {
       password: await fakeHasher.hash('123456'),
     })
 
-    inMemoryStudentsRepository.items.push(student)
+    inMemoryAccountsRepository.items.push(student)
 
     const result = await sut.execute({
       email: 'johndoe@example.com',

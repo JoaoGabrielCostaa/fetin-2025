@@ -4,27 +4,27 @@ import { INestApplication } from '@nestjs/common'
 import { Test } from '@nestjs/testing'
 import { hash } from 'bcryptjs'
 import request from 'supertest'
-import { StudentFactory } from 'test/factories/make-student'
+import { AccountFactory } from 'test/factories/make-account'
 
 describe('Authenticate (E2E)', () => {
   let app: INestApplication
-  let studentFactory: StudentFactory
+  let accountsFactory: AccountFactory
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
       imports: [AppModule, DatabaseModule],
-      providers: [StudentFactory],
+      providers: [AccountFactory],
     }).compile()
 
     app = moduleRef.createNestApplication()
 
-    studentFactory = moduleRef.get(StudentFactory)
+    accountsFactory = moduleRef.get(AccountFactory)
 
     await app.init()
   })
 
   test('[POST] /sessions', async () => {
-    await studentFactory.makePrismaStudent({
+    await accountsFactory.makePrismaUserAccount({
       email: 'johndoe@example.com',
       password: await hash('123456', 8),
     })

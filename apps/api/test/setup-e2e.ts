@@ -13,6 +13,11 @@ function generateUniqueDatabaseURL(schemaId: string) {
 
   const url = new URL(process.env.DATABASE_URL)
 
+  if (!url.searchParams.get('schema')) {
+    url.searchParams.append('schema', schemaId)
+    return url.toString()
+  }
+
   url.searchParams.set('schema', schemaId)
 
   return url.toString()
@@ -25,6 +30,7 @@ beforeAll(async () => {
 
   process.env.DATABASE_URL = databaseURL
 
+  execSync('node ./scripts/strip-public.js')
   execSync('npx prisma migrate deploy')
 })
 
