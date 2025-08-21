@@ -20,5 +20,9 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "zod": "^4.0.17",
+    "zod-validation-error": "^4.0.1"
+  }
 }

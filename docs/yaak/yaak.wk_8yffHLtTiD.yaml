@@ -1,0 +1,14 @@
+type: workspace
+model: workspace
+id: wk_8yffHLtTiD
+createdAt: 2025-08-19T20:44:32.521891200
+updatedAt: 2025-08-19T20:44:32.521892
+authentication: {}
+authenticationType: null
+description: ''
+headers: []
+name: DonAI
+encryptionKeyChallenge: null
+settingValidateCertificates: true
+settingFollowRedirects: true
+settingRequestTimeout: 0

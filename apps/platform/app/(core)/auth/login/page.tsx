@@ -152,7 +152,7 @@ export default function DonAiLogin() {
           <p className="text-sm text-gray-600">
             Ainda não possui cadastro?{" "}
             <Link
-              href="/register"
+              href="/auth/register"
               className="text-primary-600 hover:text-primary-700 hover:underline font-medium"
             >
               Clique aqui.

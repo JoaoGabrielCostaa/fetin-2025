@@ -1,0 +1,21 @@
+{
+  "material-icon-theme.files.associations": {
+    "*.module.ts": "nest",
+    "vitest.config.e2e.ts": "vitest"
+  },
+  "dotenv.enableConceal": false,
+  "security.envVariableConceal": false,
+  "prisma.showEnvValues": true,
+  "editor.conceal": false,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "string.quoted.double.env, string.quoted.single.env",
+        "settings": {
+          "foreground": "#d4d4d4"
+        }
+      }
+    ]
+  },
+  "workbench.settings.experimentalEnvVarsConceal": false
+}

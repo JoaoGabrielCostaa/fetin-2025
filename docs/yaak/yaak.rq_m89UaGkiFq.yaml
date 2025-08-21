@@ -1,0 +1,27 @@
+type: http_request
+model: http_request
+id: rq_m89UaGkiFq
+createdAt: 2025-08-21T18:58:27.183846100
+updatedAt: 2025-08-21T19:01:16.485338100
+workspaceId: wk_8yffHLtTiD
+folderId: null
+authentication: {}
+authenticationType: null
+body:
+  text: |-
+    {
+      "email": "joaogabrielprivate02@gmail.com",
+      "password": "123456"
+    }
+bodyType: application/json
+description: ''
+headers:
+- enabled: true
+  name: Content-Type
+  value: application/json
+  id: G5zjfwFmyG
+method: POST
+name: ''
+sortPriority: -1755775952851.0
+url: http://localhost:3333/sessions
+urlParameters: []

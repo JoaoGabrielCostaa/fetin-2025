@@ -1,0 +1,111 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id        String @id @default(uuid())
+  name      String
+  cpf       String   @unique
+  email     String   @unique
+  job       String?
+  picture   String?
+  password  String
+  ong       ONG?     @relation(fields: [ongId], references: [id])
+  ongId     Int? @map("ong_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  FeedPosts      FeedPost[]
+  Projects       ONGsProjectsParticipant[]
+  FollowedONGs   ONGsFollower[]
+
+  @@map("accounts")
+}
+
+model ONG {
+  id             Int       @id @default(autoincrement())
+  name           String
+  cnpj           String    @unique
+  description    String?
+  mission        String?
+  cep            String?
+  image          String?
+  banner         String?
+  foundationDate DateTime? @map("foundation_date")
+  website        String?
+  contactNumber  String? @map("contact_number")
+  contactEmail   String? @map("contact_email")
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+
+  Accounts       Account[]
+  Projects       ONGsProject[]
+  Tags           ONGsTag[]
+  Followers      ONGsFollower[]
+
+  @@map("ongs")
+}
+
+model ONGsProject {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  status      String
+  image       String?
+  ong         ONG      @relation(fields: [ongId], references: [id])
+  ongId       Int @map("ong_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  Participants ONGsProjectsParticipant[]
+
+  @@map("ongs_projects")
+}
+
+model ONGsProjectsParticipant {
+  account   Account @relation(fields: [accountId], references: [id])
+  accountId String @map("account_id")
+  project   ONGsProject @relation(fields: [projectId], references: [id])
+  projectId Int @map("project_id")
+
+  @@id([accountId, projectId])
+
+  @@map("ongs_projects_participants")
+}
+
+model ONGsFollower {
+  account   Account @relation(fields: [accountId], references: [id])
+  accountId String @map("account_id")
+  ong       ONG  @relation(fields: [ongId], references: [id])
+  ongId     Int @map("ong_id")
+  followedAt DateTime @default(now()) @map("followed_at")
+
+  @@id([accountId, ongId])
+
+  @@map("ongs_followers")
+}
+
+model ONGsTag {
+  id    Int   @id @default(autoincrement())
+  title String
+  ong   ONG   @relation(fields: [ongId], references: [id])
+  ongId Int @map("ong_id")
+
+  @@map("ongs_tags")
+}
+
+model FeedPost {
+  id        Int      @id @default(autoincrement())
+  account      Account     @relation(fields: [accountId], references: [id])
+  accountId    String @map("user_id")
+  description String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("feed_posts")
+}

@@ -1,0 +1,37 @@
+type: http_request
+model: http_request
+id: rq_TpvcSqgVuW
+createdAt: 2025-08-21T11:32:32.857744500
+updatedAt: 2025-08-21T18:23:09.088149800
+workspaceId: wk_8yffHLtTiD
+folderId: null
+authentication: {}
+authenticationType: null
+body:
+  text: |-
+    {
+      "name": "João Gabriel",
+      "cpf": "14200666685",
+      "email": "joaogabrielprivate02@gmail.com",
+      "password": "123456"
+    }
+bodyType: application/json
+description: ''
+headers:
+- enabled: true
+  name: ''
+  value: ''
+  id: CgsYzz9GW7
+- enabled: true
+  name: ''
+  value: ''
+  id: kmGJ7xmBII
+- enabled: true
+  name: Content-Type
+  value: application/json
+  id: ips7mps6ck
+method: POST
+name: ''
+sortPriority: -1755775952851.0
+url: http://localhost:3333/accounts
+urlParameters: []

@@ -24,10 +24,12 @@ export default function AuthLayout({
         <div className="bg-white" />
       </div>
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative">
+        <div className="relative max-w-[430px]">
           <Image
             src={donAiLogoBranco}
-            className="absolute -left-[550px] top-1/2 -translate-y-1/2"
+            width={504}
+            height={203}
+            className="absolute -left-[550px] top-1/2 -translate-y-1/2 max-w-[450px]"
             alt="DonAI Logo Branco"
           />
           {children}
